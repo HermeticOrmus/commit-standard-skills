@@ -1,0 +1,17 @@
+<type>(<scope>): <imperative summary, ≤72 chars, no trailing period>
+
+<why this change exists — the motivation, in 1–2 sentences>
+
+<what changed at a level the diff doesn't show — invariants, alternatives>
+
+<notes/risks/follow-ups, optional>
+
+# Refs: #
+# Fixes: #
+# Risk:
+# BREAKING CHANGE:
+# Co-Authored-By:
+#
+# OCS v1.0 — https://github.com/HermeticOrmus/commit-standard-skills
+# Types: feat fix refactor perf docs test style chore build ci revert
+# No emoji. No AI footers. Subject imperative, lowercase, no period.

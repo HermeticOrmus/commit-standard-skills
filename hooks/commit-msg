@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+# commit-msg hook — enforces the Ormus Commit Standard (OCS) v1.0.
+# Install:
+#   curl -o .git/hooks/commit-msg https://raw.githubusercontent.com/HermeticOrmus/commit-standard-skills/main/hooks/commit-msg
+#   chmod +x .git/hooks/commit-msg
+#
+# Bypass: git commit --no-verify (and explain in the next commit why)
+
+set -euo pipefail
+IFS=$'\n\t'
+
+MSG_FILE="$1"
+SUBJECT="$(head -1 "$MSG_FILE")"
+
+fail() {
+    echo "ERROR: commit message rejected by OCS hook" >&2
+    echo "  $1" >&2
+    echo "" >&2
+    echo "OCS v1.0: https://github.com/HermeticOrmus/commit-standard-skills" >&2
+    exit 1
+}
+
+# Skip merge commits + reverts (they have their own format)
+case "$SUBJECT" in
+    Merge\ *) exit 0 ;;
+    Revert\ *) exit 0 ;;
+esac
+
+# Subject must match type(scope): description OR type: description
+if ! [[ "$SUBJECT" =~ ^(feat|fix|refactor|perf|docs|test|style|chore|build|ci|revert)(\([a-z0-9_/-]+\))?:\ .+ ]]; then
+    fail "Subject must match 'type(scope): description' or 'type: description'. Got: '$SUBJECT'"
+fi
+
+# Subject ≤ 72 chars
+if (( ${#SUBJECT} > 72 )); then
+    fail "Subject too long (${#SUBJECT} chars, max 72). Aim ≤ 50."
+fi
+
+# No trailing period in subject
+if [[ "$SUBJECT" == *.  ]] || [[ "$SUBJECT" =~ \.$ ]]; then
+    fail "Subject must not end with a period."
+fi
+
+# No emoji in subject (rough check — covers common emoji ranges)
+if echo "$SUBJECT" | grep -qP '[\x{1F300}-\x{1F9FF}\x{2600}-\x{27BF}]'; then
+    fail "Emoji in subject is banned. Use the type keyword instead."
+fi
+
+# No " and " in subject (multi-concern commit)
+if [[ "$SUBJECT" =~ \ and\  ]]; then
+    fail "Subject contains ' and ' — split into separate commits."
+fi
+
+# No AI tool footers anywhere
+if grep -qE '^(Generated with Claude Code|Co-Authored-By: Claude <noreply)' "$MSG_FILE"; then
+    fail "Banned AI footer detected. Remove 'Generated with' / 'Co-Authored-By: Claude' lines."
+fi
+
+# All checks passed
+exit 0

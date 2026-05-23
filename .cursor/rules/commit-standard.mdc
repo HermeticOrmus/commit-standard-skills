@@ -1,0 +1,65 @@
+---
+description: Disciplined git commit messages — type(scope) structure, no emoji, no AI footers, atomicity rules, footer conventions. Ormus Commit Standard (OCS) v1.0.
+alwaysApply: true
+---
+
+# Commit standard (OCS v1.0)
+
+Apply to every commit message you write or propose.
+
+## Shape
+
+```
+<type>(<scope>): <imperative summary, ≤72 chars, no period>
+
+<why — motivation, 1-2 sentences>
+
+<what — invariants, alternatives, level the diff doesn't show>
+
+Refs: #123
+Fixes: #789
+Risk: <if destructive>
+```
+
+## Types
+
+`feat fix refactor perf docs test style chore build ci revert`
+
+## Subject rules
+
+- Imperative mood: `add` not `added` or `adds`
+- Lowercase first letter
+- No trailing period
+- ≤72 chars (aim ≤50)
+- No emoji
+- No " and " — split into separate commits
+
+## Body rules
+
+- Lead with why
+- Wrap 72 (100 for URLs/paths)
+- Don't restate the diff
+- 2-4 paragraphs max
+- No hype, no AI flourishes, no apologies
+
+## Footer rules
+
+- `Refs:` related issues
+- `Fixes:` / `Closes:` closes an issue
+- `BREAKING CHANGE:` major bump
+- `Risk:` destructive ops, migrations
+- `Verified:` how verified beyond test suite
+- `Co-Authored-By:` authentic collaboration only
+
+## Banned
+
+- Emoji anywhere
+- `Generated with Claude Code` / `Co-Authored-By: Claude <noreply@anthropic.com>` (unless user explicitly requested for that commit)
+- Marketing language: "powerful", "stunning", "best-in-class", "world-class"
+- Bare `chore: misc`
+
+## Atomicity
+
+- One concern per commit
+- Tests for behavior changes ship in the same commit
+- Squash WIP before push to shared branches
