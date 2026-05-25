@@ -1,6 +1,23 @@
-# Commit Standard Skills
+<p align="center">
+  <img src="https://ormus.solutions/mascot/chain_braces_to_swan.gif" alt="Commit Standard Skills" width="128" style="image-rendering: pixelated;" />
+</p>
 
-> A single `CLAUDE.md` for disciplined git commit messages. The Ormus Commit Standard (OCS) v1.0 — Conventional Commits + Chris Beams seven rules + a couple of additions, minus the emoji + AI-footer noise.
+<h1 align="center">Commit Standard Skills</h1>
+
+<p align="center">
+  <em>A CLAUDE.md for disciplined git commit messages — type(scope) structure, banned emoji/AI footers, atomicity rules, footer conventions. The Ormus Commit Standard (OCS) v1.0.</em>
+</p>
+
+<p align="center">
+  <a href="https://github.com/HermeticOrmus/commit-standard-skills/stargazers"><img src="https://img.shields.io/github/stars/HermeticOrmus/commit-standard-skills?style=flat-square&color=aa8142" alt="Stars" /></a>
+  <a href="https://github.com/HermeticOrmus/commit-standard-skills/blob/main/LICENSE"><img src="https://img.shields.io/github/license/HermeticOrmus/commit-standard-skills?style=flat-square&color=aa8142" alt="License" /></a>
+  <a href="https://github.com/HermeticOrmus/commit-standard-skills/commits"><img src="https://img.shields.io/github/last-commit/HermeticOrmus/commit-standard-skills?style=flat-square&color=aa8142" alt="Last Commit" /></a>
+  <img src="https://img.shields.io/badge/Claude_Code-aa8142?style=flat-square&logo=anthropic&logoColor=white" alt="Claude Code" />
+</p>
+
+---
+
+> **A single `CLAUDE.md` for disciplined git commit messages. The Ormus Commit Standard (OCS) v1.0 — Conventional Commits + Chris Beams seven rules + a couple of additions, minus the emoji + AI-footer noise.**
 
 ## The shape
 
